@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Superhero Dashboard</title>
+</head>
+<body>
+
+  <h1>Superhero Database</h1>
+
+  <!-- Search and Filter Banner -->
+  <div class="banner">
+    <label for="search-field">Search Field:</label>
+    <select id="search-field">
+      <option value="name">Name</option>
+      <option value="biography.fullName">Full Name</option>
+      <option value="appearance.race">Race</option>
+      <option value="appearance.gender">Gender</option>
+      <option value="biography.alignment">Alignment</option>
+    </select>
+
+    <input type="text" id="search-box" placeholder="Search...">
+
+    <label for="search-operator">Search Operator:</label>
+    <select id="search-operator">
+      <option value="include">Include</option>
+      <option value="exclude">Exclude</option>
+      <option value="fuzzy">Fuzzy</option>
+      <option value="equals">Equals</option>
+      <option value="not-equals">Not Equals</option>
+      <option value="greater-than">Greater Than</option>
+      <option value="less-than">Less Than</option>
+    </select>
+
+    <label for="page-size">Page Size:</label>
+    <select id="page-size">
+      <option value="10">10</option>
+      <option value="20" selected>20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="all">All</option>
+    </select>
+  </div>
+
+  <!-- Table of superheroes -->
+  <table>
+    <thead>
+      <tr>
+        <th>Icon</th>
+        <th data-column="name">Name</th>
+        <th data-column="biography.fullName">Full Name</th>
+        <th data-column="powerstats">Powerstats</th> <!-- Consolidated Powerstats Column -->
+        <th data-column="appearance.race">Race</th>
+        <th data-column="appearance.gender">Gender</th>
+        <th data-column="appearance.height">Height</th>
+        <th data-column="appearance.weight">Weight</th>
+        <th data-column="biography.placeOfBirth">Place of Birth</th>
+        <th data-column="biography.alignment">Alignment</th>
+      </tr>
+    </thead>
+    <tbody id="hero-table-body">
+      <!-- Dynamic data goes here -->
+    </tbody>
+  </table>
+
+  <!-- Popup Modal for Detail View -->
+  <div id="hero-detail-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeDetailView()">&times;</span>
+      <img id="hero-detail-img" src="" alt="Hero Image" class="hero-img-large">
+      <h2 id="hero-detail-name"></h2>
+      <p id="hero-detail-fullname"></p>
+      <p id="hero-detail-stats"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
