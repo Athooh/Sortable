@@ -179,7 +179,7 @@ const showDetailView = (hero) => {
 
   // Display the modal
   document.getElementById('hero-detail-modal').style.display = 'block';
-  updateURL(); // Update URL to include the hero ID
+  updateURL(hero.id); // Update URL to include the hero ID
 };
 
 // Close the modal
@@ -206,15 +206,12 @@ window.onclick = function(event) {
 };
 
 // Update the URL to reflect the current search, sorting, or pagination state
-const updateURL = () => {
+const updateURL = (heroId = null) => {
   const searchTerm = document.getElementById('search-box').value;
   const searchField = document.getElementById('search-field').value;
   const sort = sortedColumn;
   const order = sortOrder;
   const page = currentPage;
-
-  const heroModal = document.getElementById('hero-detail-modal').style.display === 'block';
-  const selectedHero = heroModal ? filteredHeroes[0].id : null; // Hero ID for the detail view
 
   const url = new URL(window.location);
   url.searchParams.set('search', searchTerm);
@@ -222,11 +219,11 @@ const updateURL = () => {
   url.searchParams.set('sort', sort);
   url.searchParams.set('order', order);
   url.searchParams.set('page', page);
-  
-  if (selectedHero) {
-    url.searchParams.set('hero', selectedHero);
+
+  if (heroId) {
+    url.searchParams.set('hero', heroId); // Set the hero ID in the URL
   } else {
-    url.searchParams.delete('hero');
+    url.searchParams.delete('hero'); // Remove hero ID if modal is closed
   }
 
   history.pushState({}, '', url);
