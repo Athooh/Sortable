@@ -64,12 +64,12 @@ Before running this project, you should have the following installed:
 1. **Clone the Repository**:
    Open your terminal and run the following command:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/Athooh/Sortable.git
    ```
 
 2. **Navigate to the Project Directory**:
    ```bash
-   cd superhero-dashboard
+   cd Sortable
    ```
 
 3. **Open the Project**:
